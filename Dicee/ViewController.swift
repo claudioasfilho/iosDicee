@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController{
     
     var  randomDiceIndex1 : Int = 0
     var  randomDiceIndex2 : Int = 0
@@ -16,10 +17,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
+    
     let diceArray = ["dice1", "dice2","dice3","dice4","dice5","dice6"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateDiceImages()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -31,7 +35,7 @@ class ViewController: UIViewController {
     @IBAction func rollButtonPressed(_ sender: UIButton) {
         
         updateDiceImages()
-
+        
         
     }
     
@@ -43,26 +47,13 @@ class ViewController: UIViewController {
         print("Dice 1 = ", randomDiceIndex1+1)
         print("Dice 2 = ", randomDiceIndex2+1)
         
-        switch randomDiceIndex1 {
-        case 0:
-            diceImageView1.image = UIImage(named: "dice1" )
-        case 1:
-            diceImageView1.image = UIImage(named: "dice2" )
-        case 2:
-            diceImageView1.image = UIImage(named: "dice3" )
-        case 3:
-            diceImageView1.image = UIImage(named: "dice4" )
-        case 4:
-            diceImageView1.image = UIImage(named: "dice5" )
-        case 5:
-            diceImageView1.image = UIImage(named: "dice6" )
-        default:
-            diceImageView1.image = UIImage(named: "dice1" )
-        }
-        
+        diceImageView1.image = UIImage(named: diceArray[randomDiceIndex1] )
         diceImageView2.image = UIImage(named: diceArray[randomDiceIndex2] )
     }
     
-    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        
+        updateDiceImages()
+    }
 }
 
