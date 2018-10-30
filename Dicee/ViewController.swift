@@ -17,6 +17,7 @@ class ViewController: UIViewController{
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
+    @IBOutlet weak var diceLabel1: UILabel!
     
     let diceArray = ["dice1", "dice2","dice3","dice4","dice5","dice6"]
     
@@ -49,6 +50,8 @@ class ViewController: UIViewController{
         
         diceImageView1.image = UIImage(named: diceArray[randomDiceIndex1] )
         diceImageView2.image = UIImage(named: diceArray[randomDiceIndex2] )
+        diceLabel1.text = String(randomDiceIndex1+1)
+        
     }
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
